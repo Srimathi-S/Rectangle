@@ -10,4 +10,7 @@ public class Rectangle {
 	public int findArea() {
 		return length*breadth;
 	}
+	public int findPerimeter() {
+		return 2*(length+breadth);
+	}
 }

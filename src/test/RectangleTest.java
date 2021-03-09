@@ -6,42 +6,74 @@ import utility.Rectangle;
 
 public class RectangleTest {
 	@Test
-	public void testFindArea()
-	{
-		//First case which takes positive value
-		int length=3;
-		int breadth=4;
-		int expectedArea=12;
-		Rectangle rectangle1=new Rectangle(length,breadth);
-		int actualArea=rectangle1.findArea();
-		assertEquals(expectedArea, actualArea);
+	public void testAreaIsPositiveWithSidesOfPositiveValue(){
+		int length = 3;
+		int breadth = 4;
+		int expectedArea = 12;
+		Rectangle rectangle = new Rectangle(length, breadth);
 		
-		//Second case which takes neutral value
-		length=0;
-		breadth=0;
-		expectedArea=0;
-		Rectangle rectangle2=new Rectangle(length,breadth);
-		actualArea=rectangle2.findArea();
+		int actualArea = rectangle.area();
+		
+		assertEquals(expectedArea, actualArea);
+	}
+
+	@Test
+	public void testAreaIsNeutralWithSidesOfNeutralValue() {
+		int length = 0;
+		int breadth = 0;
+		int expectedArea = 0;
+		Rectangle rectangle = new Rectangle(length, breadth);
+		
+		int actualArea = rectangle.area();
+		
 		assertEquals(expectedArea, actualArea);
 	}
 	
 	@Test
-	public void testFindPerimeter()
-	{
-		//First case which takes positive value
-		int length=3;
-		int breadth=4;
-		int expectedPerimeter=14;
-		Rectangle rectangle1=new Rectangle(length,breadth);
-		int actualPerimeter=rectangle1.findPerimeter();
-		assertEquals(expectedPerimeter, actualPerimeter);
+	public void testAreaIsNeutralWithSidesOfNegativeValue() {
+		int length = -3;
+		int breadth = 0;
+		int expectedArea = 0;
+		Rectangle rectangle = new Rectangle(length, breadth);
 		
-		//Second case which takes neutral value
-		length=0;
-		breadth=0;
-		expectedPerimeter=0;
-		Rectangle rectangle2=new Rectangle(length,breadth);
-		actualPerimeter=rectangle2.findPerimeter();
+		int actualArea = rectangle.area();
+		
+		assertEquals(expectedArea, actualArea);
+	}
+
+	@Test
+	public void testPerimeterIsPositiveWithSidesOfPositiveValue() {
+		int length = 3;
+		int breadth = 4;
+		int expectedPerimeter = 14;
+		Rectangle rectangle = new Rectangle(length, breadth);
+		
+		int actualPerimeter = rectangle.perimeter();
+		
 		assertEquals(expectedPerimeter, actualPerimeter);
+	}
+
+	@Test
+	public void testPerimeterIsNeutralWithSidesOfNeutralValue() {
+		int length = 0;
+		int breadth = 0;
+		int expectedArea = 0;
+		Rectangle rectangle = new Rectangle(length, breadth);
+		
+		int actualArea = rectangle.perimeter();
+		
+		assertEquals(expectedArea, actualArea);
+	}
+	
+	@Test
+	public void testPerimeterIsNeutralWithSidesOfNegativeValue() {
+		int length = -3;
+		int breadth = 0;
+		int expectedArea = 0;
+		Rectangle rectangle = new Rectangle(length, breadth);
+		
+		int actualArea = rectangle.perimeter();
+		
+		assertEquals(expectedArea, actualArea);
 	}
 }

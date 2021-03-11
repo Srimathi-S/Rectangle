@@ -1,23 +1,22 @@
 package test;
 import exception.InvalidSidesException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utility.Rectangle;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RectangleTest {
+
 	@Test
 	public void generatesErrorWhileCreatingRectangleWithNegativeSides(){
 		int length = -3;
 		int breadth = -4;
 		String expectedMessage="Sides do not support negative and zero value";
 
-		Exception exception=assertThrows(InvalidSidesException.class, ()->{new Rectangle(length, breadth);});
+		Exception exception=assertThrows(InvalidSidesException.class, ()-> new Rectangle(length, breadth));
 		String actualMessage=exception.getMessage();
 
-		assertEquals(expectedMessage,actualMessage);
+		Assertions.assertEquals(expectedMessage,actualMessage);
 	}
 
 	@Test
@@ -26,10 +25,10 @@ public class RectangleTest {
 		int breadth = 4;
 		String expectedMessage="Sides do not support negative and zero value";
 
-		Exception exception=assertThrows(InvalidSidesException.class, ()->{new Rectangle(length, breadth);});
+		Exception exception=assertThrows(InvalidSidesException.class, ()-> new Rectangle(length, breadth));
 		String actualMessage=exception.getMessage();
 
-		assertEquals(expectedMessage,actualMessage);
+		Assertions.assertEquals(expectedMessage,actualMessage);
 	}
 
 	@Test
@@ -39,7 +38,7 @@ public class RectangleTest {
 
 		Rectangle rectangle=new Rectangle(length, breadth);
 
-		assertTrue(rectangle instanceof Rectangle);
+		Assertions.assertTrue(rectangle instanceof Rectangle);
 	}
 
 	@Test
@@ -51,7 +50,7 @@ public class RectangleTest {
 		
 		int actualArea = rectangle.area();
 		
-		assertEquals(expectedArea, actualArea);
+		Assertions.assertEquals(expectedArea, actualArea);
 	}
 
 	@Test
@@ -63,7 +62,7 @@ public class RectangleTest {
 
 		int actualPerimeter = rectangle.perimeter();
 
-		assertEquals(expectedPerimeter, actualPerimeter);
+		Assertions.assertEquals(expectedPerimeter, actualPerimeter);
 	}
 
 }

@@ -1,12 +1,49 @@
 package test;
-
-import static org.junit.Assert.assertEquals;
+import exception.InvalidSidesException;
 import org.junit.jupiter.api.Test;
 import utility.Rectangle;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class RectangleTest {
 	@Test
-	public void testAreaIsPositiveWithSidesOfPositiveValue(){
+	public void generatesErrorWhileCreatingRectangleWithNegativeSides(){
+		int length = -3;
+		int breadth = -4;
+		String expectedMessage="Sides do not support negative and zero value";
+
+		Exception exception=assertThrows(InvalidSidesException.class, ()->{new Rectangle(length, breadth);});
+		String actualMessage=exception.getMessage();
+
+		assertEquals(expectedMessage,actualMessage);
+	}
+
+	@Test
+	public void generatesErrorWhileCreatingRectangleWithNeutralSides(){
+		int length = 0;
+		int breadth = 4;
+		String expectedMessage="Sides do not support negative and zero value";
+
+		Exception exception=assertThrows(InvalidSidesException.class, ()->{new Rectangle(length, breadth);});
+		String actualMessage=exception.getMessage();
+
+		assertEquals(expectedMessage,actualMessage);
+	}
+
+	@Test
+	public void generatesRectangleWhileCreatingRectangleWithPositiveSides() throws InvalidSidesException {
+		int length = 6;
+		int breadth = 4;
+
+		Rectangle rectangle=new Rectangle(length, breadth);
+
+		assertTrue(rectangle instanceof Rectangle);
+	}
+
+	@Test
+	public void testAreaIsPositiveWithSidesOfPositiveValue() throws InvalidSidesException {
 		int length = 3;
 		int breadth = 4;
 		int expectedArea = 12;
@@ -18,62 +55,15 @@ public class RectangleTest {
 	}
 
 	@Test
-	public void testAreaIsNeutralWithSidesOfNeutralValue() {
-		int length = 0;
-		int breadth = 0;
-		int expectedArea = 0;
-		Rectangle rectangle = new Rectangle(length, breadth);
-		
-		int actualArea = rectangle.area();
-		
-		assertEquals(expectedArea, actualArea);
-	}
-	
-	@Test
-	public void testAreaIsNeutralWithSidesOfNegativeValue() {
-		int length = -3;
-		int breadth = 0;
-		int expectedArea = 0;
-		Rectangle rectangle = new Rectangle(length, breadth);
-		
-		int actualArea = rectangle.area();
-		
-		assertEquals(expectedArea, actualArea);
-	}
-
-	@Test
-	public void testPerimeterIsPositiveWithSidesOfPositiveValue() {
+	public void testPerimeterIsPositiveWithSidesOfPositiveValue() throws InvalidSidesException {
 		int length = 3;
 		int breadth = 4;
 		int expectedPerimeter = 14;
 		Rectangle rectangle = new Rectangle(length, breadth);
-		
+
 		int actualPerimeter = rectangle.perimeter();
-		
+
 		assertEquals(expectedPerimeter, actualPerimeter);
 	}
 
-	@Test
-	public void testPerimeterIsNeutralWithSidesOfNeutralValue() {
-		int length = 0;
-		int breadth = 0;
-		int expectedArea = 0;
-		Rectangle rectangle = new Rectangle(length, breadth);
-		
-		int actualArea = rectangle.perimeter();
-		
-		assertEquals(expectedArea, actualArea);
-	}
-	
-	@Test
-	public void testPerimeterIsNeutralWithSidesOfNegativeValue() {
-		int length = -3;
-		int breadth = 0;
-		int expectedArea = 0;
-		Rectangle rectangle = new Rectangle(length, breadth);
-		
-		int actualArea = rectangle.perimeter();
-		
-		assertEquals(expectedArea, actualArea);
-	}
 }

@@ -4,6 +4,7 @@ import exception.InvalidSidesException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utility.Square;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SquareTest {
